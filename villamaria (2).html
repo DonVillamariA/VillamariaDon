@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Graphics</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas1" width="200" height="200"></canvas>
+  <canvas id="canvas2" width="200" height="200"></canvas>
+  <canvas id="canvas3" width="200" height="200"></canvas>
+  <canvas id="canvas4" width="200" height="200"></canvas>
+  <canvas id="canvas5" width="200" height="200"></canvas>
+  <canvas id="canvas6" width="200" height="200"></canvas>
+  <canvas id="canvas7" width="200" height="200"></canvas>
+  <canvas id="canvas8" width="200" height="200"></canvas>
+
+  <script>
+    function drawArt1() {
+      const canvas = document.getElementById('canvas1');
+      const ctx = canvas.getContext('2d');
+
+       // Background
+      ctx.fillStyle = 'lightblue';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Sun
+      ctx.beginPath();
+      ctx.arc(50, 50, 20, 0, 2 * Math.PI);
+      ctx.fillStyle = 'yellow';
+      ctx.fill();
+
+      // Grass
+      ctx.fillStyle = 'green';
+      ctx.fillRect(0, 150, canvas.width, canvas.height - 150);
+
+      // House
+      ctx.fillStyle = 'orange';
+      ctx.fillRect(75, 100, 50, 50);
+
+      // Roof
+      ctx.beginPath();
+      ctx.moveTo(75, 100);
+      ctx.lineTo(100, 75);
+      ctx.lineTo(125, 100);
+      ctx.closePath();
+      ctx.fillStyle = 'brown';
+      ctx.fill();
+
+      // Window
+      ctx.fillStyle = 'lightblue';
+      ctx.fillRect(85, 115, 10, 10);
+      ctx.fillRect(105, 115, 10, 10);
+      ctx.fillRect(95, 125, 10, 10);
+
+      // Chimney
+      ctx.fillStyle = 'gray';
+      ctx.fillRect(120, 70, 8, 25);
+
+      // Clouds
+      ctx.beginPath();
+      ctx.arc(200, 40, 10, 0, 2 * Math.PI);
+      ctx.arc(215, 40, 12, 0, 2 * Math.PI);
+      ctx.arc(230, 40, 10, 0, 2 * Math.PI);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+    }
+
+    function drawArt2() {
+      const canvas = document.getElementById('canvas2');
+      const ctx = canvas.getContext('2d');
+
+     // Sky
+      ctx.fillStyle = 'lightblue';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Sun
+      ctx.beginPath();
+      ctx.arc(160, 40, 15, 0, 2 * Math.PI);
+      ctx.fillStyle = 'yellow';
+      ctx.fill();
+
+      // Grass
+      ctx.fillStyle = 'green';
+      ctx.fillRect(0, 120, canvas.width, canvas.height - 120);
+
+      // Flowers
+      drawFlower(ctx, 40, 150);
+      drawFlower(ctx, 80, 160);
+      drawFlower(ctx, 120, 150);
+      drawFlower(ctx, 160, 160);
+
+      // Tree with Leaves
+      drawTree(ctx, 100, 80);
+
+      // Fence
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(10, 100, 5, 40);
+      ctx.fillRect(30, 100, 5, 40);
+      ctx.fillRect(50, 100, 5, 40);
+      ctx.fillRect(170, 100, 5, 40);
+      ctx.fillRect(190, 100, 5, 40);
+    }
+
+    function drawFlower(ctx, x, y) {
+      // Stem
+      ctx.fillStyle = 'green';
+      ctx.fillRect(x + 2.5, y, 5, 40);
+
+      // Petals
+      ctx.beginPath();
+      ctx.arc(x + 2.5, y - 12, 12, 0, Math.PI * 2);
+      ctx.fillStyle = 'pink';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(x - 10, y + 5, 12, 0, Math.PI * 2);
+      ctx.fillStyle = 'pink';
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(x + 15, y + 5, 12, 0, Math.PI * 2);
+      ctx.fillStyle = 'pink';
+      ctx.fill();
+
+      // Leaves
+      ctx.fillStyle = 'green';
+      ctx.beginPath();
+      ctx.moveTo(x + 2.5, y + 40);
+      ctx.lineTo(x - 5, y + 30);
+      ctx.lineTo(x + 2.5, y + 20);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(x + 2.5, y + 20);
+      ctx.lineTo(x + 10, y + 30);
+      ctx.lineTo(x + 2.5, y + 40);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawTree(ctx, x, y) {
+      // Trunk
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(x, y, 10, 40);
+
+      // Leaves
+      ctx.fillStyle = 'green';
+      ctx.beginPath();
+      ctx.arc(x + 5, y - 20, 30, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    function drawArt3() {
+      const canvas = document.getElementById('canvas3');
+      const ctx = canvas.getContext('2d');
+
+      // Sky
+      ctx.fillStyle = 'lightblue';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Sun
+      ctx.beginPath();
+      ctx.arc(30, 30, 15, 0, 2 * Math.PI);
+      ctx.fillStyle = 'yellow';
+      ctx.fill();
+
+      // Grass
+      ctx.fillStyle = 'green';
+      ctx.fillRect(0, 120, canvas.width, canvas.height - 120);
+
+      // Playground Equipment
+      drawSwing(ctx, 50, 90);
+      drawSlide(ctx, 120, 120);
+      drawSeesaw(ctx, 220, 150);
+    }
+
+    function drawSwing(ctx, x, y) {
+      // Support
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(x - 5, y, 10, 80);
+
+      // Top bar
+      ctx.fillStyle = 'gray';
+      ctx.fillRect(x - 30, y, 60, 5);
+
+      // Ropes
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x - 30, y);
+      ctx.lineTo(x, y - 30);
+      ctx.moveTo(x + 30, y);
+      ctx.lineTo(x, y - 30);
+      ctx.stroke();
+
+      // Seat
+      ctx.fillStyle = 'blue';
+      ctx.beginPath();
+      ctx.arc(x, y - 30, 10, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
+    function drawSlide(ctx, x, y) {
+      // Slide base
+      ctx.fillStyle = 'red';
+      ctx.fillRect(x - 20, y - 20, 40, 20);
+
+      // Slide ladder
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(x - 20, y - 20, 5, 60);
+
+      // Slide slope
+      ctx.fillStyle = 'red';
+      ctx.beginPath();
+      ctx.moveTo(x - 20, y - 20);
+      ctx.lineTo(x + 20, y - 20);
+      ctx.lineTo(x, y - 40);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawSeesaw(ctx, x, y) {
+      // Seesaw base
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(x - 20, y - 10, 40, 5);
+
+      // Seesaw seats
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(x - 20, y - 15, 20, 5);
+      ctx.fillRect(x, y - 15, 20, 5);
+    }
+
+    function drawArt4() {
+      const canvas = document.getElementById('canvas4');
+      const ctx = canvas.getContext('2d');
+
+      // Horizontal arm
+      ctx.fillStyle = 'black';
+      ctx.fillRect(50, 40, 50, 10);
+
+      // Vertical arm
+      ctx.fillStyle = 'black';
+      ctx.fillRect(70, 20, 10, 90);
+    }
+
+    function drawArt5() {
+      const canvas = document.getElementById('canvas5');
+      const ctx = canvas.getContext('2d');
+
+      // Water
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(0, 60, canvas.width, 180);
+
+      // Boat body
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(50, 40, 50, 20);
+
+      // Boat cabin
+      ctx.fillStyle = 'gray';
+      ctx.fillRect(60, 30, 30, 10);
+
+      // Mast
+      ctx.fillStyle = 'brown';
+      ctx.fillRect(70, 15, 3, 15);
+
+      // Sail
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.moveTo(73, 15);
+      ctx.lineTo(73, 40);
+      ctx.lineTo(100, 28);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawArt6() {
+      const canvas = document.getElementById('canvas6');
+      const ctx = canvas.getContext('2d');
+
+      
+       // Background
+      ctx.fillStyle = 'lightgray';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Illusion lines
+      ctx.fillStyle = 'black';
+      for (let i = 0; i < canvas.width; i += 20) {
+        ctx.fillRect(i, 0, 10, canvas.height);
+      }
+    }
+
+    function drawLeg(ctx, x, y, angle, length) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle * Math.PI / 180);
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, length, 5);
+      ctx.restore();
+    }
+
+
+    function drawLeg(ctx, x, y, angle, length) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle * Math.PI / 180);
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, length, 3);
+      ctx.restore();
+    }
+
+    function drawArt7() {
+      const canvas = document.getElementById('canvas7');
+      const ctx = canvas.getContext('2d');
+	const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      // Background
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Rotating lines
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 2;
+
+      for (let angle = 0; angle < 360; angle += 10) {
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate((angle * Math.PI) / 180);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(50, 0);
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
+    
+    function drawArt8() {
+      const canvas = document.getElementById('canvas8');
+      const ctx = canvas.getContext('2d');
+	  const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      // Background
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Pulsating circles
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 2;
+
+      for (let radius = 10; radius <= 100; radius += 10) {
+        const alpha = Math.abs(Math.sin(Date.now() / 500)) * 0.8 + 0.2;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`;
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
+
+    // Draw the pulsating circles illusion
+    setInterval(() => {
+      drawPulsatingCircles();
+    }, 30);
+
+    drawArt1();
+    drawArt2();
+    drawArt3();
+    drawArt4();
+    drawArt5();
+    drawArt6();
+    drawArt7();
+    drawArt8();
+  </script>
+</body>
+</html>
